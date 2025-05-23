@@ -1,4 +1,4 @@
-
+!pip install streamlit
 import requests
 from bs4 import BeautifulSoup # Corrected import statement
 import pandas as pd
