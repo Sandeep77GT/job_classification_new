@@ -7,7 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1NDcdjsEr0IBIAbDaIhfcbGEP049ofNHp
 """
 
-pip install streamlit
+!pip install streamlit
 import requests
 from bs4 import BeautifulSoup # Corrected import statement
 import pandas as pd
