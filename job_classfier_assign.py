@@ -1,3 +1,4 @@
+pip install -r requirements.txt
 !pip install streamlit
 import requests
 from bs4 import BeautifulSoup # Corrected import statement
