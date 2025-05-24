@@ -1,7 +1,8 @@
-Job Posting Classification Based on Required Skills Using Hierarchical Clustering
+#Job Posting Classification Based on Required Skills Using Hierarchical Clustering
+
 This project scrapes job postings from Karkidi.com, extracts relevant information including required skills, and classifies the jobs using hierarchical clustering based on those skills. A Streamlit frontend is provided to explore the clustered job postings interactively.
 
-Features
+#Features
 Scrapes job postings related to a specific keyword from multiple pages.
 
 Extracts job title, company, location, experience, skills, and summary.
@@ -14,7 +15,7 @@ Saves clustered data and models for later use.
 
 Visualizes and filters job clusters via an interactive Streamlit web application.
 
-Project Structure
+#Project Structure
 bash
 Copy
 Edit
@@ -54,7 +55,7 @@ bash
 Copy
 Edit
 streamlit run job_cluster_viewer.py
-Requirements
+#Requirements
 Python 3.7+
 
 joblib
@@ -75,10 +76,10 @@ bash
 Copy
 Edit
 pip install -r requirements.txt
-Customization
+#Customization
 Modify the keyword and pages parameters in scrape_karkidi_jobs() to customize search queries.
 
 Adjust n_clusters in cluster_jobs() to experiment with different numbers of clusters.
 
-License
+#License
 This project is licensed under the MIT License.
