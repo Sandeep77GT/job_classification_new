@@ -1,85 +1,87 @@
-#Job Posting Classification Based on Required Skills Using Hierarchical Clustering
+# Job Posting Classification Based on Required Skills (Hierarchical Clustering)
 
-This project scrapes job postings from Karkidi.com, extracts relevant information including required skills, and classifies the jobs using hierarchical clustering based on those skills. A Streamlit frontend is provided to explore the clustered job postings interactively.
+This project scrapes job listings from [karkidi.com](https://www.karkidi.com) and automatically categorizes them based on required skills using **Hierarchical Clustering** (Agglomerative Clustering). The system clusters jobs by skills and saves the model for later use in classification or alerting users.
 
-#Features
-Scrapes job postings related to a specific keyword from multiple pages.
+---
 
-Extracts job title, company, location, experience, skills, and summary.
+## Features
 
-Preprocesses the extracted skills into a format suitable for text vectorization.
+- Scrapes job titles, companies, locations, experience, summary, and required skills from karkidi.com.
+- Preprocesses the skills text (cleaning, tokenization).
+- Uses TF-IDF vectorization on skills text.
+- Performs unsupervised clustering with **Hierarchical Clustering** (Agglomerative Clustering).
+- Saves the trained clustering model, vectorizer, and clustered job data.
+- (Optional) Can be extended to notify users based on their skill preferences.
+- (Optional) Automate daily scraping and clustering using scheduling.
 
-Uses TF-IDF vectorization and Agglomerative (Hierarchical) Clustering to group jobs by skill similarity.
+---
 
-Saves clustered data and models for later use.
+## Setup & Usage
 
-Visualizes and filters job clusters via an interactive Streamlit web application.
+### Requirements
 
-#Project Structure
+- Python 3.7+
+- Packages:
+  - requests
+  - beautifulsoup4
+  - pandas
+  - scikit-learn
+  - joblib
+  - streamlit (optional, for UI)
+
+Install dependencies via:
+
+```bash
+pip install -r requirements.txt
+Running the scraper and clustering
+python
+Copy
+Edit
+python daily_scrape_and_cluster.py
+This script will:
+
+Scrape job listings from karkidi.com (default 2 pages, configurable)
+
+Preprocess skills column
+
+Vectorize and cluster jobs using Hierarchical Clustering
+
+Save model (model/karkidi_model.pkl), vectorizer (model/karkidi_vectorizer.pkl), and clustered data (clustered_jobs.csv)
+
+Deploying the Streamlit app
+The Streamlit app (app.py) loads the saved model and clustered data to:
+
+Display job listings grouped by clusters
+
+Allow filtering by cluster
+
+(Optional) Notify users on new jobs matching their preferred skills
+
+Run locally:
+
 bash
 Copy
 Edit
-.
-├── hierarchical_clustering_jobs.py        # Main script to scrape, preprocess, and cluster jobs
-├── job_cluster_viewer.py                  # Streamlit app to display clustered job postings
+streamlit run app.py
+Automation (Optional)
+To automate scraping and clustering daily:
+
+Schedule the daily_scrape_and_cluster.py script using cron (Linux/macOS) or Task Scheduler (Windows)
+
+Or use GitHub Actions workflow to run the script and push updates
+
+Streamlit app will then reflect updated clusters on reload
+
+Project Structure
+bash
+Copy
+Edit
+your-repo/
+├── daily_scrape_and_cluster.py   # Main scraping & clustering script
+├── app.py                        # Streamlit app UI
+├── clustered_jobs.csv            # Scraped & clustered job data (updated regularly)
 ├── model/
-│   ├── karkidi_model.pkl                  # Saved clustering model
-│   └── karkidi_vectorizer.pkl             # Saved TF-IDF vectorizer
-├── clustered_jobs.csv                     # CSV output with clustered job data
-└── requirements.txt                       # Required Python packages
-Setup Instructions
-1. Clone the Repository
-bash
-Copy
-Edit
-git clone https://github.com/yourusername/job-posting-clustering.git
-cd job-posting-clustering
-2. Install Required Packages
-bash
-Copy
-Edit
-pip install -r requirements.txt
-3. Run the Scraper and Clustering Script
-bash
-Copy
-Edit
-python hierarchical_clustering_jobs.py
-This will generate:
-
-clustered_jobs.csv
-
-TF-IDF vectorizer and clustering model in the model/ directory
-
-4. Launch the Streamlit App
-bash
-Copy
-Edit
-streamlit run job_cluster_viewer.py
-#Requirements
-Python 3.7+
-
-joblib
-
-beautifulsoup4
-
-scikit-learn
-
-pandas
-
-requests
-
-streamlit
-
-Install them with:
-
-bash
-Copy
-Edit
-pip install -r requirements.txt
-#Customization
-Modify the keyword and pages parameters in scrape_karkidi_jobs() to customize search queries.
-
-Adjust n_clusters in cluster_jobs() to experiment with different numbers of clusters.
-
-#License
-This project is licensed under the MIT License.
+│   ├── karkidi_model.pkl         # Trained hierarchical clustering model
+│   └── karkidi_vectorizer.pkl    # TF-IDF vectorizer
+├── requirements.txt              # Python dependencies
+└── README.md                    # This documentation
