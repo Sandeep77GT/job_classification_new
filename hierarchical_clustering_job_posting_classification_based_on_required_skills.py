@@ -17,7 +17,7 @@ Original file is located at
 """
 
 # Install missing packages if needed
-
+!pip install joblib
 
 
 import requests
