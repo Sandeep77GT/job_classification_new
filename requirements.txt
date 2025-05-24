@@ -1,8 +1,6 @@
 streamlit
 pandas
-requests
-beautifulsoup4
 scikit-learn
+beautifulsoup4
+requests
 joblib
-ipython
-
