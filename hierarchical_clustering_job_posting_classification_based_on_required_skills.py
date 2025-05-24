@@ -17,8 +17,8 @@ Original file is located at
 """
 
 # Install missing packages if needed
-!pip install joblib
-pip install -r requirements.txt
+
+
 
 import requests
 from bs4 import BeautifulSoup
